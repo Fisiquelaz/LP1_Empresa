@@ -8,7 +8,7 @@ class Funcionario {
 	private:
 		string nome;
 		double salario;
-		data data_admissao;
+		int data_admissao;
 		static int count;
 	public:
 		// construtor
