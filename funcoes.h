@@ -24,6 +24,5 @@ void aumento(vector<Empresa> &empresas);
 void experiencia(vector<Empresa> &empresas);
 void listar_funcionarios_experientes(Empresa& empresa);
 void calcular_media(Empresa& empresa,Funcionario& funcionario);
-void teste();
 
 #endif

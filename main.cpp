@@ -36,9 +36,6 @@ int main(){
 			case 6:
 				calcular_media(empresa, funcionario);
 				break;
-			case 13:
-				teste();
-				break;
 			case 0:
 				fim = 1;
 				break;

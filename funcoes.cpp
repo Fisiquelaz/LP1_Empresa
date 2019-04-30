@@ -14,14 +14,9 @@ void imprimir_menu(){
 	cout << "4 - Conceder aumento aos funcionarios de uma empresa\n";
 	cout << "5 - Listar funcionários em período de experiência em uma empresa\n";
 	cout << "6 - Obter média entre empresas e funcionários\n";
-	cout << "13 - teste\n";
 	cout << "0 - Sair\n";
 }
 //FIM DO MENU
-void teste(){
-	Funcionario funcionario;
-	cout << "eae " << funcionario.get_cont() << endl;
-}
 //MANIPULAÇÃO DAS EMPRESAS
 void adicionar_empresa(vector<Empresa> &empresas){
 	Empresa empresa;
@@ -37,7 +32,7 @@ void adicionar_empresa(vector<Empresa> &empresas){
 	cout << "\nInsira a quantidade de funcionarios a ser inserida\n";
 	cin >> qtd_f;
 	for(int i = 0; i < qtd_f; i++){
-		cout << "\n" << (i+1) << "º funcionario\n\n";
+		cout << "\n" << (i+1) << "º funcionario\n";
 		criar_funcionario(empresa);
 	}
 	empresas.push_back(empresa);
@@ -99,7 +94,7 @@ void adm_listar_empresas(vector<Empresa> &empresas){
 void receber_cnpj(int& posicao, vector<Empresa> &empresas){
 	int fim = 0, cnpj;
 	while(fim != 1){
-		cout << "\nInsira o cnpj da empresa desejada\n";
+		cout << "Insira o cnpj da empresa desejada\n";
 		cin >> cnpj;
 		for(int i = 0; i < empresas.size(); i++){
 			if(empresas[i].get_cnpj() == cnpj){
@@ -265,7 +260,6 @@ void listar_funcionarios_experientes(Empresa& empresa){
 			cout << empresa.get_funcionarios()[i] << endl;
 		}
 	}
-	cout << endl;
 }
 void calcular_media(Empresa& empresa,Funcionario& funcionario){
 	if(funcionario.get_cont() > 0 && empresa.get_cont() > 0){
