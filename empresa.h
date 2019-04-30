@@ -18,7 +18,8 @@ class Empresa{
 		string get_nome();
 		void set_nome(string nome);
 		int get_cnpj();
-		void set_cnpj(int cnpj);	
+		void set_cnpj(int cnpj);
+		friend ostream& operator<< (ostream &o, Empresa empresa);
 };
 
 #endif

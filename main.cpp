@@ -10,29 +10,17 @@ using namespace std;
 
 int main(){
 	int fim = 0, op;
-	//vetor de empresas e empresa auxiliar para criação
+	//vetor de empresas
 	vector <Empresa> empresas;
-	Empresa empresa;
-	string nome;
-	int cnpj;
 	while(fim != 1){
 		imprimir_menu();
 		cin >> op;
 		switch(op){
 			case 1:
-				adicionar_empresa(&empresas);
+				adicionar_empresa(empresas);
 				break;
 			case 2:
-				if(empresas.empty()){
-					cout << "\nNão há empresas criadas\n\n";
-				}
-				else{
-					cout << "\nEmpresas criadas: \n\n";
-					for(int i = 0; i < empresas.size(); i++){
-						cout << empresas[i].get_nome() << endl;
-					}
-					cout << endl;
-				}
+				listar_empresas(empresas);
 				break;
 			case 0:
 				fim = 1;
