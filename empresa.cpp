@@ -2,9 +2,13 @@
 
 #include <string>
 #include <iostream>
+
 using namespace std;
 
+int Empresa::cont = -1;
+
 Empresa::Empresa(){
+	cont++;
 }
 
 string Empresa::get_nome(){
@@ -31,6 +35,9 @@ void Empresa::conceder_aumento(double porcento){
 		novo_salario = funcionarios[i].get_salario() * (1+(porcento/100));
 		funcionarios[i].set_salario(novo_salario);
 	}
+}
+int Empresa::get_cont(){
+	return cont;
 }
 ostream& operator<< (ostream &o, Empresa empresa){
 	o << "Nome da empresa: " << empresa.get_nome() << "\nCNPJ: " << empresa.get_cnpj() << endl;

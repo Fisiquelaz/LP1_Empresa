@@ -22,13 +22,19 @@ int main(){
 				adicionar_empresa(empresas);
 				break;
 			case 2:
-				adm_listar_empresas(empresas);
+				adicionar_funcionario(empresas);
 				break;
 			case 3:
-				aumento(empresas);
+				adm_listar_empresas(empresas);
 				break;
 			case 4:
+				aumento(empresas);
+				break;
+			case 5:
 				experiencia(empresas);
+				break;
+			case 6:
+				calcular_media(empresa, funcionario);
 				break;
 			case 13:
 				teste();

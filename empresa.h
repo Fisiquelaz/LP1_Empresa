@@ -11,6 +11,7 @@ class Empresa{
 		string nome;
 		int cnpj;
 		vector <Funcionario> funcionarios;
+		static int cont;
 	public:
 		//Construtor
 		Empresa();
@@ -22,6 +23,7 @@ class Empresa{
 		vector<Funcionario> get_funcionarios();
 		void add_funcionario(Funcionario funcionario);
 		void conceder_aumento(double porcento);
+		int get_cont();
 		friend ostream& operator<< (ostream &o, Empresa empresa);
 };
 
