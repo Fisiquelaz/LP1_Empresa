@@ -12,6 +12,8 @@ int main(){
 	int fim = 0, op;
 	//vetor de empresas
 	vector <Empresa> empresas;
+	Empresa empresa;
+	Funcionario funcionario;
 	while(fim != 1){
 		imprimir_menu();
 		cin >> op;
@@ -20,7 +22,16 @@ int main(){
 				adicionar_empresa(empresas);
 				break;
 			case 2:
-				listar_empresas(empresas);
+				adm_listar_empresas(empresas);
+				break;
+			case 3:
+				aumento(empresas);
+				break;
+			case 4:
+				experiencia(empresas);
+				break;
+			case 13:
+				teste();
 				break;
 			case 0:
 				fim = 1;

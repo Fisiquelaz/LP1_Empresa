@@ -19,6 +19,19 @@ int Empresa::get_cnpj(){
 void Empresa::set_cnpj(int novo_cnpj){
 	cnpj = novo_cnpj;
 }
+vector<Funcionario> Empresa::get_funcionarios(){
+	return funcionarios;
+}
+void Empresa::add_funcionario(Funcionario funcionario){
+	funcionarios.push_back(funcionario);
+}
+void Empresa::conceder_aumento(double porcento){
+	double novo_salario;
+	for(int i = 0; i < funcionarios.size(); i++){
+		novo_salario = funcionarios[i].get_salario() * (1+(porcento/100));
+		funcionarios[i].set_salario(novo_salario);
+	}
+}
 ostream& operator<< (ostream &o, Empresa empresa){
 	o << "Nome da empresa: " << empresa.get_nome() << "\nCNPJ: " << empresa.get_cnpj() << endl;
 	return o;

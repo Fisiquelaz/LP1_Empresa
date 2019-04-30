@@ -8,8 +8,9 @@ class Funcionario {
 	private:
 		string nome;
 		double salario;
+		int cpf;
 		int data_admissao;
-		static int count;
+		static int cont;
 	public:
 		// construtor
 		Funcionario();
@@ -17,7 +18,11 @@ class Funcionario {
 		string get_nome();
 		void set_nome(string nome);
 		double get_salario();
-		void set_salario(double salario);	
+		void set_salario(double salario);
+		int get_cpf();
+		void set_cpf(int cpf);
+		int get_cont();
+		friend ostream& operator<< (ostream &o, Funcionario funcionario);
 };
 
 #endif

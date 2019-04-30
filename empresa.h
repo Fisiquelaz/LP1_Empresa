@@ -19,6 +19,9 @@ class Empresa{
 		void set_nome(string nome);
 		int get_cnpj();
 		void set_cnpj(int cnpj);
+		vector<Funcionario> get_funcionarios();
+		void add_funcionario(Funcionario funcionario);
+		void conceder_aumento(double porcento);
 		friend ostream& operator<< (ostream &o, Empresa empresa);
 };
 
