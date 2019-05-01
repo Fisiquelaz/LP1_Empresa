@@ -1,3 +1,11 @@
+/**
+* @file empresa.cpp
+* @brief Métodos da classe Empresa
+* @author Danilo Miranda de Medeiros Galvão, João Mendes Lopes Neto
+* @since 29/04/2019
+* @date 01/05/2019
+*/
+
 #include "empresa.h"
 
 #include <string>

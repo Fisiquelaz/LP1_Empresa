@@ -1,3 +1,11 @@
+/**
+* @file main.cpp
+* @brief Arquivo principal para execução do programa
+* @author Danilo Miranda de Medeiros Galvão, João Mendes Lopes Neto
+* @since 29/04/2019
+* @date 01/05/2019
+*/
+
 #include "funcionario.h"
 #include "empresa.h"
 #include "funcoes.h"
@@ -10,7 +18,6 @@ using namespace std;
 
 int main(){
 	int fim = 0, op;
-	//vetor de empresas
 	vector <Empresa> empresas;
 	Empresa empresa;
 	Funcionario funcionario;
@@ -25,7 +32,7 @@ int main(){
 				adicionar_funcionario(empresas);
 				break;
 			case 3:
-				adm_listar_empresas(empresas);
+				listar_funcionarios_empresas(empresas);
 				break;
 			case 4:
 				aumento(empresas);

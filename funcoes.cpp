@@ -1,3 +1,11 @@
+/**
+* @file funcoes.cpp
+* @brief Funções principais para execução do programa
+* @author Danilo Miranda de Medeiros Galvão, João Mendes Lopes Neto
+* @since 29/04/2019
+* @date 01/05/2019
+*/
+
 #include "funcoes.h"
 
 #include <iostream>
@@ -5,7 +13,7 @@
 
 using namespace std;
 
-//MENU
+//IMPRIME MENU
 void imprimir_menu(){
 	cout << "Escolha a opção desejada\n";
 	cout << "1 - Criar empresa\n";
@@ -16,13 +24,12 @@ void imprimir_menu(){
 	cout << "6 - Obter média entre empresas e funcionários\n";
 	cout << "0 - Sair\n";
 }
-//FIM DO MENU
-//MANIPULAÇÃO DAS EMPRESAS
+
+//ADICIONA EMPRESA
 void adicionar_empresa(vector<Empresa> &empresas){
 	Empresa empresa;
 	string nome;
 	int cnpj, qtd_f;
-	//não seria melhor a gente fazer um construtor?
 	cout << "\nInsira o nome da empresa\n";
 	cin >> nome;
 	empresa.set_nome(nome);
@@ -38,6 +45,8 @@ void adicionar_empresa(vector<Empresa> &empresas){
 	empresas.push_back(empresa);
 	cout << "\nEmpresa adicionada com sucesso\n\n";
 }
+
+//RECEBE CNPJ DA EMPRESA
 void receber_cnpj_empresa(Empresa& empresa, vector<Empresa> &empresas){
 	int fim = 0, cnpj;
 	while(fim != 1){
@@ -52,6 +61,8 @@ void receber_cnpj_empresa(Empresa& empresa, vector<Empresa> &empresas){
 		}
 	}
 }
+
+//CHECA SE JÁ EXISTE UMA EMPRESA COM O MESMO CNPJ
 int checar_cnpj_empresa(int cnpj, vector<Empresa> &empresas){
 	for(int i = 0; i < empresas.size(); i++){
 		if(cnpj == empresas[i].get_cnpj()){
@@ -60,6 +71,8 @@ int checar_cnpj_empresa(int cnpj, vector<Empresa> &empresas){
 	}
 	return 1;
 }
+
+//ADICIONA FUNCIONÁRIO
 void adicionar_funcionario(vector<Empresa> &empresas){
 	int posicao;
 	int listar = listar_empresas(empresas);
@@ -69,6 +82,8 @@ void adicionar_funcionario(vector<Empresa> &empresas){
 	}
 	cout << endl;
 }
+
+//LISTA EMPRESAS; RETORNA 1 CASO HAJA EMPRESAS PARA LISTAR; RETORNA 0 CASO CONTRÁRIO
 int listar_empresas(vector<Empresa> &empresas){
 	if(empresas.empty()){
 		cout << "\nNão há empresas criadas\n\n";
@@ -82,7 +97,9 @@ int listar_empresas(vector<Empresa> &empresas){
 	}
 	return 1;
 }
-void adm_listar_empresas(vector<Empresa> &empresas){
+
+//LISTA EMPRESAS E LISTA FUNCIONARIOS DA EMPRESA SELECIONADA
+void listar_funcionarios_empresas(vector<Empresa> &empresas){
 	int posicao;
 	int listar = listar_empresas(empresas);
 	if(listar == 1){
@@ -90,7 +107,8 @@ void adm_listar_empresas(vector<Empresa> &empresas){
 		listar_funcionarios(empresas[posicao]);
 	}
 }
-//FIM DA MANIPULAÇÃO DAS EMPRESAS
+
+//RECEBE CNPJ E ALTERA O VALOR DA VARIÁVEL "posicao" PARA A POSICAO DA EMPRESA ESCOLHIDA
 void receber_cnpj(int& posicao, vector<Empresa> &empresas){
 	int fim = 0, cnpj;
 	while(fim != 1){
@@ -108,6 +126,8 @@ void receber_cnpj(int& posicao, vector<Empresa> &empresas){
 		}
 	}
 }
+
+//LISTA FUNCIONÁRIOS DE UMA EMPRESA
 void listar_funcionarios(Empresa& empresa){
 	cout << endl;
 	for(int i = 0; i < empresa.get_funcionarios().size(); i++){
@@ -115,6 +135,7 @@ void listar_funcionarios(Empresa& empresa){
 	}
 }
 
+//CRIA FUNCIONÁRIO
 void criar_funcionario(Empresa& empresa){
 	Funcionario funcionario;
 	double salario;
@@ -132,6 +153,7 @@ void criar_funcionario(Empresa& empresa){
 	empresa.add_funcionario(funcionario);
 }
 
+//RECEBE A DATA DE ADMISSÃO DE UM FUNCIONÁRIO
 void receber_data_funcionario(Funcionario& funcionario){
 	int ano = receber_data_ano_funcionario(funcionario);
 	int mes = receber_data_mes_funcionario(funcionario);
@@ -139,6 +161,7 @@ void receber_data_funcionario(Funcionario& funcionario){
 	funcionario.set_data_admissao(dia, mes, ano);
 }
 
+//RECEBE O ANO DA DATA DE ADMISSÃO DE UM FUNCIONÁRIO
 int receber_data_ano_funcionario(Funcionario& funcionario){
 	int fim = 0, ano;
 	while(fim != 1){
@@ -154,6 +177,7 @@ int receber_data_ano_funcionario(Funcionario& funcionario){
 	return ano;
 }
 
+//RECEBE O MES DA DATA DE ADMISSÃO DE UM FUNCIONÁRIO
 int receber_data_mes_funcionario(Funcionario& funcionario){
 	int fim = 0, mes;
 	while(fim != 1){
@@ -169,6 +193,7 @@ int receber_data_mes_funcionario(Funcionario& funcionario){
 	return mes;
 }
 
+//RECEBE O DIA DA DATA DE ADMISSÃO DE UM FUNCIONÁRIO
 int receber_data_dia_funcionario(Funcionario& funcionario, int mes, int ano){
 	int fim = 0, dia;
 	while(fim != 1){
@@ -212,6 +237,7 @@ int receber_data_dia_funcionario(Funcionario& funcionario, int mes, int ano){
 	return dia;
 }
 
+//RECEBE CPF DE UM FUNCIONÁRIO
 void receber_cpf_funcionario(Funcionario& funcionario, Empresa& empresa){
 	int fim = 0, cpf;
 	while(fim != 1){
@@ -226,6 +252,8 @@ void receber_cpf_funcionario(Funcionario& funcionario, Empresa& empresa){
 		}
 	}
 }
+
+//CHECA SE JÁ EXISTE UM FUNCIONÁRIO NA MESMA EMPRESA COM O CPF RECEBIDO
 int checar_cpf_funcionario(int cpf, Empresa& empresa){
 	for(int i = 0; i < empresa.get_funcionarios().size(); i++){
 		if(cpf == empresa.get_funcionarios()[i].get_cpf()){
@@ -234,6 +262,8 @@ int checar_cpf_funcionario(int cpf, Empresa& empresa){
 	}
 	return 1;
 }
+
+//SELECIONA EMPRESA PARA DAR AUMENTO AOS FUNCIONÁRIOS
 void aumento(vector<Empresa> &empresas){
 	double porcento;
 	int posicao;
@@ -245,15 +275,19 @@ void aumento(vector<Empresa> &empresas){
 		empresas[posicao].conceder_aumento(porcento);
 	}
 }
+
+//SELECIONA EMPRESA PARA LISTAR FUNCIONÁRIOS EM PERÍODO DE EXPERIÊNCIA
 void experiencia(vector<Empresa> &empresas){
 	int posicao;
 	int listar = listar_empresas(empresas);
 	if(listar == 1){
 		receber_cnpj(posicao, empresas);
-		listar_funcionarios_experientes(empresas[posicao]);
+		listar_funcionarios_em_experiencia(empresas[posicao]);
 	}
 }
-void listar_funcionarios_experientes(Empresa& empresa){
+
+//LISTA FUNCIONÁRIOS EM PERÍODO DE EXPERIÊNCIA
+void listar_funcionarios_em_experiencia(Empresa& empresa){
 	cout << endl;
 	for(int i = 0; i < empresa.get_funcionarios().size(); i++){
 		if(empresa.get_funcionarios()[i].tempo_empresa() < 90){
@@ -261,6 +295,8 @@ void listar_funcionarios_experientes(Empresa& empresa){
 		}
 	}
 }
+
+//CALCULA MÉDIA ENTRE FUNCIONÁRIOS E EMPRESAS
 void calcular_media(Empresa& empresa,Funcionario& funcionario){
 	if(funcionario.get_cont() > 0 && empresa.get_cont() > 0){
 		double media = (double)funcionario.get_cont()/(double)empresa.get_cont();
